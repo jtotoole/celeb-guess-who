@@ -9,7 +9,7 @@ while (choice == "2") do
 	puts "Welcome to Celebrity Guess Who! Give me an IP address!"
 	IP_address = gets.chomp
 
-	clues = HTTParty.get("http://" + IP_address)
+	clues = HTTParty.get("http://" + IP_address + "/")
 	puts clues["results"]
 
 	while ((key_returned == "incorrect") || (choice == "1")) do
@@ -23,7 +23,7 @@ while (choice == "2") do
 			choice = gets.chomp
 			key_returned = ""
 		else
-			puts response["incorrect"]
+			puts response["correct"]
 			choice = "2"	
 		end
 	end
