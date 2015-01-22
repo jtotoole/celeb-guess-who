@@ -10,11 +10,8 @@ while (choice == "2") do
 	IP_address = gets.chomp
 
 	clues = HTTParty.get("http://" + IP_address)
-	array = clues["results"]
-	array.each do |key, value|
-		puts value
-	end
-	
+	puts clues["results"]
+
 	while ((key_returned == "incorrect") || (choice == "1")) do
 		puts "Which celebrity might this be?"
 		guess = gets.chomp.gsub(" ", "").upcase
@@ -26,7 +23,7 @@ while (choice == "2") do
 			choice = gets.chomp
 			key_returned = ""
 		else
-			puts response["correct"]
+			puts response["incorrect"]
 			choice = "2"	
 		end
 	end
